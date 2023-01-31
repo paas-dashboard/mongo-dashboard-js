@@ -17,14 +17,25 @@
 # under the License.
 #
 
-env:
-  browser: true
-  es2021: true
-extends: airbnb-base
-overrides: []
-parserOptions:
-  ecmaVersion: latest
-  sourceType: module
-rules: {
-  "no-console": 0
-}
+name: "license check"
+
+on:
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  license-check:
+    name: License Check
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Check license header
+        uses: apache/skywalking-eyes@main
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          config: .licenserc.yaml
