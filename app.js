@@ -28,4 +28,14 @@ const HOST = '0.0.0.0';
 // App
 const app = express();
 
+app.use(express.static('static'));
+
+function registerApi() {
+  const mongoRouter = express.Router({ mergeParams: true });
+  app.use('/api/mongo', mongoRouter);
+}
+
+// register api
+registerApi();
+
 app.listen(PORT, HOST);
