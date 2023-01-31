@@ -17,14 +17,13 @@
 # under the License.
 #
 
-env:
-  browser: true
-  es2021: true
-extends: airbnb-base
-overrides: []
-parserOptions:
-  ecmaVersion: latest
-  sourceType: module
-rules: {
-  "no-console": 0
-}
+header:
+  license:
+    spdx-id: Apache-2.0
+    copyright-owner: Apache Software Foundation
+  paths-ignore:
+    - '**/*.md'
+    - '**/*.json'
+    - 'LICENSE'
+    - '.dockerignore'
+    - '.gitignore'
